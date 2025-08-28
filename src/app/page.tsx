@@ -1,3 +1,4 @@
+import FormTransaction from "@/components/organism/FormTransaction";
 import { formatRupiah } from "@/helpers/formatRupiah";
 
 export default function Home() {
@@ -41,60 +42,7 @@ export default function Home() {
               📝 Tambah Transaksi
             </h2>
             <hr className="border-primary my-2 border-2" />
-            <form className="mt-4 flex flex-col gap-3">
-              <div id="group-input">
-                <label htmlFor="" className="text-base font-medium">
-                  Deskripsi
-                </label>
-                <input
-                  type="text"
-                  placeholder="Gaji bulanan, Makan siang, dll"
-                  className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 duration-100 focus:border-green-500 focus:outline-none"
-                />
-              </div>
-              <div id="group-input">
-                <label htmlFor="" className="text-base font-medium">
-                  Jumlah (Rp) :
-                </label>
-                <input
-                  type="number"
-                  className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 duration-100 focus:border-green-500 focus:outline-none"
-                />
-              </div>
-              <div id="group-input">
-                <label htmlFor="" className="text-base font-medium">
-                  Kategori :
-                </label>
-                <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 duration-100 focus:border-green-500 focus:outline-none">
-                  <option value="">Pilih Kategori</option>
-                  <option value="">Gaji</option>
-                  <option value="">Freelance</option>
-                  <option value="">Investasi</option>
-                  <option value="">Hadiah</option>
-                  <option value="">Makanan</option>
-                  <option value="">Transportasi</option>
-                  <option value="">Belanja</option>
-                  <option value="">Tagihan</option>
-                  <option value="">Hiburan</option>
-                  <option value="">Kesehatan</option>
-                  <option value="">Lainnya</option>
-                </select>
-              </div>
-              <div id="group-input">
-                <label htmlFor="" className="text-base font-medium">
-                  Tanggal :
-                </label>
-                <input
-                  type="date"
-                  className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 duration-100 focus:border-green-500 focus:outline-none"
-                />
-              </div>
-              <div className="">
-                <button className="w-full cursor-pointer rounded-md bg-green-500 py-2 text-center font-semibold text-white duration-200 hover:bg-green-500/80">
-                  Tambah Transaksi
-                </button>
-              </div>
-            </form>
+            <FormTransaction />
           </div>
           <div className="flex-1 rounded-xl bg-white p-4 shadow-xl">
             <h2 className="text-xl font-semibold text-black">
