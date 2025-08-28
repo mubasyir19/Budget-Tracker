@@ -1,3 +1,5 @@
+import { formatRupiah } from "@/helpers/formatRupiah";
+
 export default function Home() {
   return (
     <div className="rounded-lg">
@@ -10,20 +12,24 @@ export default function Home() {
         </div>
         <div className="mt-5 rounded-xl bg-white/30 py-6">
           <h1 className="text-center text-2xl font-semibold text-white">
-            Saldo: Rp 0
+            Saldo: {formatRupiah(0)}
           </h1>
           <div className="mt-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-around">
             <div className="text-center">
               <p className="text-base font-medium text-white">
                 Total Pemasukan:
               </p>
-              <p className="text-primary text-base font-bold">Rp 0</p>
+              <p className="text-primary text-base font-bold">
+                {formatRupiah(0)}
+              </p>
             </div>
             <div className="text-center">
               <p className="text-base font-medium text-white">
                 Total Pengeluaran:
               </p>
-              <p className="text-tersier text-base font-bold">Rp 0</p>
+              <p className="text-tersier text-base font-bold">
+                {formatRupiah(0)}
+              </p>
             </div>
           </div>
         </div>
