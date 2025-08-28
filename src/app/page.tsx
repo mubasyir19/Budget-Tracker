@@ -1,18 +1,13 @@
 import TransactionItem from "@/components/molecules/TransactionItem";
 import FormTransaction from "@/components/organism/FormTransaction";
+import Navbar from "@/components/organism/Navbar";
 import { formatRupiah } from "@/helpers/formatRupiah";
-import { User } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="rounded-lg">
       <section className="rounded-t-lg bg-green-500 p-6">
-        <div className="flex justify-end">
-          <div className="flex items-center gap-2 rounded-lg bg-white/30 px-3 py-1">
-            <User className="size-5 text-white" />
-            <p className="text-sm font-semibold text-white">Mahdy Mubasyir</p>
-          </div>
-        </div>
+        <Navbar />
         <div className="mt-4 text-center">
           <h1 className="text-3xl font-bold text-white">💰 Budget Tracker</h1>
           <p className="mt-2 text-sm font-medium text-white">
