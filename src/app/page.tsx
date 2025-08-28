@@ -1,11 +1,19 @@
+import TransactionItem from "@/components/molecules/TransactionItem";
 import FormTransaction from "@/components/organism/FormTransaction";
 import { formatRupiah } from "@/helpers/formatRupiah";
+import { User } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="rounded-lg">
       <section className="rounded-t-lg bg-green-500 p-6">
-        <div className="text-center">
+        <div className="flex justify-end">
+          <div className="flex items-center gap-2 rounded-lg bg-white/30 px-3 py-1">
+            <User className="size-5 text-white" />
+            <p className="text-sm font-semibold text-white">Mahdy Mubasyir</p>
+          </div>
+        </div>
+        <div className="mt-4 text-center">
           <h1 className="text-3xl font-bold text-white">💰 Budget Tracker</h1>
           <p className="mt-2 text-sm font-medium text-white">
             Kelola keuangan Anda dengan mudah dan efektif
@@ -75,16 +83,16 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="mt-6 flex flex-col gap-2 md:flex-row md:flex-wrap lg:flex-nowrap">
+            <div className="mt-4 flex flex-col gap-2 md:flex-row md:flex-wrap lg:flex-nowrap">
               <div className="">
-                <select className="mt-1.5 w-fit rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none">
+                <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
                   <option value="">Semua Jenis</option>
                   <option value="">Pemasukan</option>
                   <option value="">Pengeluaran</option>
                 </select>
               </div>
               <div className="">
-                <select className="mt-1.5 w-fit rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none">
+                <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
                   <option value="">Semua Kategori</option>
                   <option value="">Gaji</option>
                   <option value="">Freelance</option>
@@ -100,12 +108,53 @@ export default function Home() {
                 </select>
               </div>
               <div className="">
-                <select className="mt-1.5 w-fit rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none">
+                <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
                   <option value="">Hari Ini</option>
                   <option value="">Minggu Ini</option>
                   <option value="">Bulan Ini</option>
                 </select>
               </div>
+            </div>
+            <div
+              id="transaction-list"
+              className="mt-4 space-y-3 overflow-y-auto lg:h-72"
+            >
+              <TransactionItem
+                id="first"
+                category="belanja"
+                dateTransaction="2025-08-28"
+                description="Beli baju di Uniqlo"
+                price={299000}
+                transactionType="expense"
+                key={`first`}
+              />
+              <TransactionItem
+                id="second"
+                category="gaji"
+                dateTransaction="2025-08-28"
+                description="Gaji bulanan"
+                price={8500000}
+                transactionType="income"
+                key={`second`}
+              />
+              <TransactionItem
+                id="third"
+                category="freelance"
+                dateTransaction="2025-08-28"
+                description="Freelance design website"
+                price={2000000}
+                transactionType="income"
+                key={`third`}
+              />
+              <TransactionItem
+                id="fourth"
+                category="freelance"
+                dateTransaction="2025-08-28"
+                description="Freelance design website"
+                price={2000000}
+                transactionType="income"
+                key={`fourth`}
+              />
             </div>
           </div>
         </div>

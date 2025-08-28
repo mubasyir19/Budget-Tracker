@@ -1,7 +1,5 @@
-export enum TransactionType {
-  income = "income",
-  expsene = "expsene",
-}
+export type TransactionType = "income" | "expense";
+
 export enum Category {
   gaji = "gaji",
   freelance = "freelance",

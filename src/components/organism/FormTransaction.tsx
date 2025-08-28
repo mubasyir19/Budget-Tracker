@@ -1,17 +1,13 @@
 "use client";
 
-import {
-  Category,
-  TransactionForm,
-  TransactionType,
-} from "@/types/transaction";
+import { Category, TransactionForm } from "@/types/transaction";
 import React, { useState } from "react";
 
 export default function FormTransaction() {
   const [formData, setFormData] = useState<TransactionForm>({
     description: "",
     price: 0,
-    type: TransactionType.income,
+    type: "income",
     category: Category.gaji,
     dateTransaction: "",
   });
@@ -35,7 +31,7 @@ export default function FormTransaction() {
       setFormData({
         description: "",
         price: 0,
-        type: TransactionType.income,
+        type: "income",
         category: Category.gaji,
         dateTransaction: "",
       });
@@ -52,11 +48,9 @@ export default function FormTransaction() {
       <div className="flex w-full gap-2">
         <button
           type="button"
-          onClick={() =>
-            setFormData((prev) => ({ ...prev, type: TransactionType.income }))
-          }
-          className={`w-1/2 cursor-pointer rounded-lg border px-4 py-2 text-sm font-medium transition ${
-            formData.type === TransactionType.income
+          onClick={() => setFormData((prev) => ({ ...prev, type: "income" }))}
+          className={`w-1/2 cursor-pointer rounded-lg border px-4 py-2 text-xs font-medium transition lg:text-sm ${
+            formData.type === "income"
               ? "border-green-500 bg-green-500 text-white"
               : "border-gray-300 bg-white text-gray-700 hover:bg-gray-100"
           }`}
@@ -66,11 +60,9 @@ export default function FormTransaction() {
 
         <button
           type="button"
-          onClick={() =>
-            setFormData((prev) => ({ ...prev, type: TransactionType.expsene }))
-          }
-          className={`w-1/2 cursor-pointer rounded-lg border px-4 py-2 text-sm font-medium transition ${
-            formData.type === TransactionType.expsene
+          onClick={() => setFormData((prev) => ({ ...prev, type: "expense" }))}
+          className={`w-1/2 cursor-pointer rounded-lg border px-4 py-2 text-xs font-medium transition lg:text-sm ${
+            formData.type === "expense"
               ? "border-red-500 bg-red-500 text-white"
               : "border-gray-300 bg-white text-gray-700 hover:bg-gray-100"
           }`}
@@ -79,7 +71,7 @@ export default function FormTransaction() {
         </button>
       </div>
       <div id="group-input">
-        <label htmlFor="" className="text-base font-medium">
+        <label htmlFor="" className="text-sm font-medium lg:text-base">
           Deskripsi
         </label>
         <input
@@ -89,11 +81,11 @@ export default function FormTransaction() {
           value={formData.description}
           onChange={handleChange}
           placeholder="Gaji bulanan, Makan siang, dll"
-          className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 duration-100 focus:border-green-500 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none lg:text-base"
         />
       </div>
       <div id="group-input">
-        <label htmlFor="" className="text-base font-medium">
+        <label htmlFor="" className="text-sm font-medium lg:text-base">
           Jumlah (Rp) :
         </label>
         <input
@@ -102,11 +94,11 @@ export default function FormTransaction() {
           name="price"
           value={formData.price}
           onChange={handleChange}
-          className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 duration-100 focus:border-green-500 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none lg:text-base"
         />
       </div>
       <div id="group-input">
-        <label htmlFor="" className="text-base font-medium">
+        <label htmlFor="" className="text-sm font-medium lg:text-base">
           Kategori :
         </label>
         <select
@@ -114,7 +106,7 @@ export default function FormTransaction() {
           name="category"
           value={formData.category}
           onChange={handleChange}
-          className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 duration-100 focus:border-green-500 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none lg:text-base"
         >
           <option value="">Pilih Kategori</option>
           <option value="gaji">Gaji</option>
@@ -131,7 +123,7 @@ export default function FormTransaction() {
         </select>
       </div>
       <div id="group-input">
-        <label htmlFor="" className="text-base font-medium">
+        <label htmlFor="" className="text-sm font-medium lg:text-base">
           Tanggal :
         </label>
         <input
@@ -140,14 +132,14 @@ export default function FormTransaction() {
           name="dateTransaction"
           value={formData.dateTransaction}
           onChange={handleChange}
-          className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 duration-100 focus:border-green-500 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none lg:text-base"
         />
       </div>
       {error && <p className="text-sm text-red-500">{error}</p>}
       <div className="">
         <button
           type="submit"
-          className="w-full cursor-pointer rounded-md bg-green-500 py-2 text-center font-semibold text-white duration-200 hover:bg-green-500/80"
+          className="w-full cursor-pointer rounded-md bg-green-500 py-2 text-center text-sm font-semibold text-white duration-200 hover:bg-green-500/80 lg:text-base"
         >
           {loading ? "loading..." : "Tambah Transaksi"}
         </button>
