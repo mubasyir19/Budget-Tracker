@@ -17,6 +17,8 @@ export default function LoginPage() {
           </label>
           <input
             type="text"
+            id="username"
+            name="username"
             placeholder="jhon_doe"
             className="mt-1.5 w-full border-b border-gray-300 py-1.5 text-white duration-100 placeholder:text-gray-300 focus:border-white focus:outline-none"
           />
@@ -27,6 +29,8 @@ export default function LoginPage() {
           </label>
           <input
             type="password"
+            id="password"
+            name="password"
             className="mt-1.5 w-full border-b border-gray-300 py-1.5 text-white duration-100 placeholder:text-gray-300 focus:border-white focus:outline-none"
           />
         </div>

@@ -20,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} bg-linear-to-r/decreasing from-indigo-500 to-teal-400 p-4 antialiased`}
+        className={`${poppins.className} bg-gradient-to-r from-indigo-500 to-teal-400 p-4`}
       >
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );
