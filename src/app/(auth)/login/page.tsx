@@ -1,9 +1,13 @@
 "use client";
 
+import { login } from "@/services/user";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -16,19 +20,30 @@ export default function LoginPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmitLogin = (e: React.FormEvent) => {
+  const handleSubmitLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
+      const response = await login(formData);
+
       console.log("form login = ", formData);
+      console.log("isi response = ", response);
+
+      toast.success("Berhasil Login");
+
       setFormData({
         username: "",
         password: "",
       });
+
+      setTimeout(() => {
+        router.push("/login");
+      }, 2000);
     } catch (error) {
       setError((error as Error).message);
+      toast.error((error as Error).message);
     } finally {
       setLoading(false);
     }
@@ -65,6 +80,7 @@ export default function LoginPage() {
             type="password"
             id="password"
             name="password"
+            placeholder="Type your password"
             value={formData.password}
             onChange={handleChange}
             className="mt-1.5 w-full border-b border-gray-300 py-1.5 text-white duration-100 placeholder:text-gray-300 focus:border-white focus:outline-none"
