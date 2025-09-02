@@ -39,7 +39,7 @@ export default function LoginPage() {
       });
 
       setTimeout(() => {
-        router.push("/login");
+        router.push("/");
       }, 2000);
     } catch (error) {
       setError((error as Error).message);

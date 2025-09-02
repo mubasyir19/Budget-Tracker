@@ -1,15 +1,20 @@
 "use client";
 
+import { useTransactions } from "@/hooks/useTransactions";
 import { Category, TransactionForm } from "@/types/transaction";
+// import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 export default function FormTransaction() {
+  // const router = useRouter();
+  const { fetchTransaction, addTransaction } = useTransactions();
   const [formData, setFormData] = useState<TransactionForm>({
     description: "",
-    price: 0,
+    amount: 0,
     type: "income",
     category: Category.gaji,
-    dateTransaction: "",
+    transaction_date: "",
   });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -21,20 +26,29 @@ export default function FormTransaction() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const addNewTransaction = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
+      const res = await addTransaction(formData);
+
       console.log("ini data form = ", formData);
+      console.log("hasil tambah = ", res);
+
       setFormData({
         description: "",
-        price: 0,
+        amount: 0,
         type: "income",
         category: Category.gaji,
-        dateTransaction: "",
+        transaction_date: "",
       });
+
+      toast.success("Berhasil tambah data");
+
+      await fetchTransaction();
+      // router.refresh();
     } catch (error) {
       console.log("an error occured = ", error);
       setError((error as Error).message);
@@ -44,7 +58,7 @@ export default function FormTransaction() {
   };
 
   return (
-    <form onSubmit={addNewTransaction} className="mt-4 flex flex-col gap-3">
+    <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">
       <div className="flex w-full gap-2">
         <button
           type="button"
@@ -90,9 +104,9 @@ export default function FormTransaction() {
         </label>
         <input
           type="number"
-          id="price"
-          name="price"
-          value={formData.price}
+          id="amount"
+          name="amount"
+          value={formData.amount}
           onChange={handleChange}
           className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none lg:text-base"
         />
@@ -128,9 +142,9 @@ export default function FormTransaction() {
         </label>
         <input
           type="date"
-          id="dateTransaction"
-          name="dateTransaction"
-          value={formData.dateTransaction}
+          id="transaction_date"
+          name="transaction_date"
+          value={formData.transaction_date}
           onChange={handleChange}
           className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none lg:text-base"
         />

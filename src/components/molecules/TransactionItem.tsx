@@ -11,6 +11,7 @@ interface Props {
   transactionType: TransactionType;
   dateTransaction: string;
   price: number;
+  openModalDelete: (id: string) => void;
 }
 
 export default function TransactionItem({
@@ -20,6 +21,7 @@ export default function TransactionItem({
   transactionType,
   dateTransaction,
   price,
+  openModalDelete,
 }: Props) {
   return (
     <div
@@ -49,7 +51,10 @@ export default function TransactionItem({
           {transactionType === "income" ? "+" : "-"}
           {formatRupiah(price)}
         </div>
-        <button className="cursor-pointer rounded border-none bg-[#f44336] p-2 text-xs text-white">
+        <button
+          onClick={() => openModalDelete(id)}
+          className="cursor-pointer rounded border-none bg-[#f44336] p-2 text-xs text-white"
+        >
           <Trash className="size-4 text-white" />
         </button>
       </div>

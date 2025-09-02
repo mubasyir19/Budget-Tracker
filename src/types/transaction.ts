@@ -16,8 +16,19 @@ export enum Category {
 
 export interface TransactionForm {
   description: string;
-  price: number;
+  amount: number;
   type: TransactionType;
   category: Category;
-  dateTransaction: string;
+  transaction_date: string;
+}
+
+export interface Transaction {
+  id: string;
+  description: string;
+  amount: number;
+  type: TransactionType;
+  category: Category;
+  transaction_date: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

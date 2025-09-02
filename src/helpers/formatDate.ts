@@ -1,23 +1,19 @@
-export function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  const day = date.getDate();
-  const month = date.getMonth();
-  const year = date.getFullYear();
+export function formatDate(dateInput: string | Date) {
+  if (!dateInput) return "";
 
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "Mei",
-    "Jun",
-    "Jul",
-    "Agu",
-    "Sep",
-    "Okt",
-    "Nov",
-    "Des",
-  ];
+  let date: Date;
 
-  return `${day.toString().padStart(2, "0")} ${months[month]} ${year}`;
+  if (dateInput instanceof Date) {
+    date = dateInput;
+  } else {
+    date = new Date(dateInput); // ISO string dari backend
+  }
+
+  if (isNaN(date.getTime())) return "Invalid Date";
+
+  return new Intl.DateTimeFormat("id-ID", {
+    day: "2-digit",
+    month: "short", // "Mei", "Agt", "Okt"
+    year: "numeric",
+  }).format(date);
 }
