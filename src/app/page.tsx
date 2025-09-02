@@ -1,9 +1,14 @@
+"use client";
+
 import FormTransaction from "@/components/organism/FormTransaction";
 import ListTransaction from "@/components/organism/ListTransaction";
 import Navbar from "@/components/organism/Navbar";
 import { formatRupiah } from "@/helpers/formatRupiah";
+import { useSummary } from "@/hooks/useSummary";
 
 export default function Home() {
+  const { summary } = useSummary();
+
   return (
     <>
       <div className="rounded-lg">
@@ -17,7 +22,7 @@ export default function Home() {
           </div>
           <div className="mt-5 rounded-xl bg-white/30 py-6">
             <h1 className="text-center text-2xl font-semibold text-white">
-              Saldo: {formatRupiah(0)}
+              Saldo: {formatRupiah(summary?.balance || 0)}
             </h1>
             <div className="mt-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-around">
               <div className="text-center">
@@ -25,7 +30,7 @@ export default function Home() {
                   Total Pemasukan:
                 </p>
                 <p className="text-primary text-base font-bold">
-                  {formatRupiah(0)}
+                  {formatRupiah(summary?.totalIncome || 0)}
                 </p>
               </div>
               <div className="text-center">
@@ -33,7 +38,7 @@ export default function Home() {
                   Total Pengeluaran:
                 </p>
                 <p className="text-tersier text-base font-bold">
-                  {formatRupiah(0)}
+                  {formatRupiah(summary?.totalExpense || 0)}
                 </p>
               </div>
             </div>
@@ -79,38 +84,38 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="mt-4 flex flex-col gap-2 md:flex-row md:flex-wrap lg:flex-nowrap">
-                <div className="">
-                  <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
-                    <option value="">Semua Jenis</option>
-                    <option value="">Pemasukan</option>
-                    <option value="">Pengeluaran</option>
-                  </select>
-                </div>
-                <div className="">
-                  <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
-                    <option value="">Semua Kategori</option>
-                    <option value="">Gaji</option>
-                    <option value="">Freelance</option>
-                    <option value="">Investasi</option>
-                    <option value="">Hadiah</option>
-                    <option value="">Makanan</option>
-                    <option value="">Transportasi</option>
-                    <option value="">Belanja</option>
-                    <option value="">Tagihan</option>
-                    <option value="">Hiburan</option>
-                    <option value="">Kesehatan</option>
-                    <option value="">Lainnya</option>
-                  </select>
-                </div>
-                <div className="">
-                  <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
-                    <option value="">Hari Ini</option>
-                    <option value="">Minggu Ini</option>
-                    <option value="">Bulan Ini</option>
-                  </select>
-                </div>
-              </div>
+              {/* <div className="mt-4 flex flex-col gap-2 md:flex-row md:flex-wrap lg:flex-nowrap">
+                  <div className="">
+                    <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
+                      <option value="">Semua Jenis</option>
+                      <option value="">Pemasukan</option>
+                      <option value="">Pengeluaran</option>
+                    </select>
+                  </div>
+                  <div className="">
+                    <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
+                      <option value="">Semua Kategori</option>
+                      <option value="">Gaji</option>
+                      <option value="">Freelance</option>
+                      <option value="">Investasi</option>
+                      <option value="">Hadiah</option>
+                      <option value="">Makanan</option>
+                      <option value="">Transportasi</option>
+                      <option value="">Belanja</option>
+                      <option value="">Tagihan</option>
+                      <option value="">Hiburan</option>
+                      <option value="">Kesehatan</option>
+                      <option value="">Lainnya</option>
+                    </select>
+                  </div>
+                  <div className="">
+                    <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
+                      <option value="">Hari Ini</option>
+                      <option value="">Minggu Ini</option>
+                      <option value="">Bulan Ini</option>
+                    </select>
+                  </div>
+                </div> */}
               <ListTransaction />
             </div>
           </div>

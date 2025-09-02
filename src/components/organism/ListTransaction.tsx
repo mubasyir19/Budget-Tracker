@@ -38,6 +38,48 @@ export default function ListTransaction() {
 
   return (
     <>
+      <div className="mt-4 flex flex-col justify-between gap-3.5 lg:flex-row lg:items-center">
+        <div className="flex flex-col gap-2 md:flex-row md:flex-wrap lg:flex-nowrap">
+          <div className="">
+            <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
+              <option value="">Semua Jenis</option>
+              <option value="">Pemasukan</option>
+              <option value="">Pengeluaran</option>
+            </select>
+          </div>
+          <div className="">
+            <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
+              <option value="">Semua Kategori</option>
+              <option value="">Gaji</option>
+              <option value="">Freelance</option>
+              <option value="">Investasi</option>
+              <option value="">Hadiah</option>
+              <option value="">Makanan</option>
+              <option value="">Transportasi</option>
+              <option value="">Belanja</option>
+              <option value="">Tagihan</option>
+              <option value="">Hiburan</option>
+              <option value="">Kesehatan</option>
+              <option value="">Lainnya</option>
+            </select>
+          </div>
+          <div className="">
+            <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
+              <option value="">Hari Ini</option>
+              <option value="">Minggu Ini</option>
+              <option value="">Bulan Ini</option>
+            </select>
+          </div>
+        </div>
+        <div className="">
+          <button
+            onClick={fetchTransaction}
+            className="w-full cursor-pointer rounded-md bg-green-500 px-4 py-1 text-center text-sm font-semibold text-white duration-200 hover:bg-green-500/80 lg:text-base"
+          >
+            Refresh
+          </button>
+        </div>
+      </div>
       <div
         id="transaction-list"
         className="mt-4 space-y-3 overflow-y-auto lg:h-72"
