@@ -32,3 +32,9 @@ export interface Transaction {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface TransactionStats {
+  todayCount: number;
+  monthCount: number;
+  dailyAverage: number;
+}

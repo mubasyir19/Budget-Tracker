@@ -58,7 +58,7 @@ export default function Home() {
                 📊 Riwayat Transaksi
               </h2>
               <hr className="border-primary my-2 border-2" />
-              <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {/* <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 <div className="from-info to-secondary flex items-center justify-center rounded-xl bg-linear-to-br py-3">
                   <div className="text-center">
                     <p className="text-base font-medium text-white">
@@ -83,7 +83,8 @@ export default function Home() {
                     <p className="mt-2 text-xl font-semibold text-white">0</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
+              {/* <StatsFinance /> */}
               {/* <div className="mt-4 flex flex-col gap-2 md:flex-row md:flex-wrap lg:flex-nowrap">
                   <div className="">
                     <select className="mt-1.5 w-full rounded-md border-2 border-gray-300 px-2.5 py-1.5 text-sm duration-100 focus:border-green-500 focus:outline-none md:w-fit">
