@@ -34,3 +34,34 @@ export async function register(data: dataRegister) {
 
   return res.json();
 }
+
+export async function profileService() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BUDGET}/user/profile`,
+    {
+      credentials: "include",
+    },
+  );
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "Failed get profile");
+  }
+
+  return res.json();
+}
+
+export async function logoutService() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BUDGET}/user/logout`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "Failed create account");
+  }
+
+  return res.json();
+}

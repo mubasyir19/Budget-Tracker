@@ -10,3 +10,11 @@ export interface dataRegister {
   password: string;
   role: "USER" | "ADMIN";
 }
+
+export interface UserProfile {
+  id: string;
+  fullname: string;
+  username: string;
+  email: string;
+  role: "USER" | "ADMIN";
+}
