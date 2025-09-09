@@ -57,7 +57,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="h-fit w-full rounded-2xl bg-white/30 p-6 backdrop-blur-md md:w-1/4">
+    <div className="h-fit w-full rounded-2xl bg-white/30 p-6 backdrop-blur-md md:w-1/2">
       <div className="text-center">
         <h1 className="text-3xl font-bold text-white">💰 Budget Tracker</h1>
         <p className="mt-2 text-sm font-medium text-slate-300">
